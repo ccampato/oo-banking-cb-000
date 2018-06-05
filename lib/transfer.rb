@@ -1,8 +1,8 @@
 class Transfer
-  attr_accessor
+  attr_accessor :name
 
-  def initialize()
-
+  def initialize(name, transfer, amount)
+    @name = name
   end
 
 end
