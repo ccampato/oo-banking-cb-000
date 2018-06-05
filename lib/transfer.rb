@@ -17,12 +17,17 @@ class Transfer
   end
 
   def execute_transaction
-    if self.valid?
-      sender.balance -= amount.freeze
-      receiver.balance += amount.freeze
-      @status= 'complete'
-    else
-      @status= 'rejected'
+    when @status == 'complete'
+      self.valid? = false
+
+      if self.valid?
+        sender.balance -= amount
+        receiver.balance += amount
+        @status= 'complete'
+      else
+        @status= 'rejected'
+      end
+      
     end
   end
 
