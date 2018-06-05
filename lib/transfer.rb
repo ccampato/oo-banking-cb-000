@@ -19,7 +19,7 @@ class Transfer
   def execute_transaction
     if self.valid?
       sender.balance.freeze -= amount
-      receiver.balance += amount
+      receiver.balance.freeze += amount
       @status= 'complete'
     else
       @status= 'rejected'
